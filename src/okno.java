@@ -21,6 +21,7 @@ import java.awt.Toolkit;
 import javax.swing.JMenu;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class okno {
 
@@ -77,6 +78,7 @@ public class okno {
 		
 		JPanel pFuel = new JPanel();
 		tabbedPane.addTab("Топливо и время", null, pFuel, null);
+		tabbedPane.setBackgroundAt(0, Color.ORANGE);
 		pFuel.setLayout(null);
 		
 		JLabel lbS = new JLabel("S=");
@@ -148,6 +150,7 @@ public class okno {
 		
 		JPanel pVes = new JPanel();
 		tabbedPane.addTab("Вес", null, pVes, null);
+		tabbedPane.setBackgroundAt(1, Color.ORANGE);
 		pVes.setLayout(null);
 		
 		JLabel lblG_2 = new JLabel("Топливо на полет=");
@@ -241,6 +244,7 @@ public class okno {
 		
 		JPanel pSpeed = new JPanel();
 		tabbedPane.addTab("Скорости", null, pSpeed, null);
+		tabbedPane.setBackgroundAt(2, Color.ORANGE);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 108, 21);
