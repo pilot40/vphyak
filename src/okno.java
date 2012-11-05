@@ -67,12 +67,12 @@ public class okno {
 		frame.setResizable(false);
 		frame.setTitle("ВПХ Як-40");
 		frame.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
-		frame.setBounds(100, 100, 521, 365);
+		frame.setBounds(100, 100, 604, 431);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 25, 505, 302);
+		tabbedPane.setBounds(0, 25, 590, 380);
 		frame.getContentPane().add(tabbedPane);
 		
 		JPanel pFuel = new JPanel();
@@ -236,8 +236,11 @@ public class okno {
 			}
 		});
 		btnRasVes.setFont(new Font("Arial", Font.BOLD, 12));
-		btnRasVes.setBounds(288, 12, 120, 23);
+		btnRasVes.setBounds(10, 258, 120, 23);
 		pVes.add(btnRasVes);
+		
+		JPanel pSpeed = new JPanel();
+		tabbedPane.addTab("Скорости", null, pSpeed, null);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 108, 21);
