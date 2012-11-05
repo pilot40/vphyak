@@ -6,6 +6,11 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import java.awt.Font;
 import java.awt.Dialog.ModalExclusionType;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JApplet;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JTextField;
@@ -22,6 +27,10 @@ import javax.swing.JMenu;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import java.awt.Canvas;
+import javax.swing.SwingConstants;
 
 public class okno {
 
@@ -68,12 +77,12 @@ public class okno {
 		frame.setResizable(false);
 		frame.setTitle("ВПХ Як-40");
 		frame.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
-		frame.setBounds(100, 100, 604, 431);
+		frame.setBounds(100, 100, 617, 471);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 25, 590, 380);
+		tabbedPane.setBounds(0, 25, 601, 407);
 		frame.getContentPane().add(tabbedPane);
 		
 		JPanel pFuel = new JPanel();
@@ -243,10 +252,33 @@ public class okno {
 		pVes.add(btnRasVes);
 		
 		JPanel pSpeed = new JPanel();
+		pSpeed.setBackground(Color.WHITE);
 		tabbedPane.addTab("Скорости", null, pSpeed, null);
-		tabbedPane.setBackgroundAt(2, Color.ORANGE);
+		pSpeed.setLayout(null);
 		
-		JMenuBar menuBar = new JMenuBar();
+		class DrawImage extends JApplet {
+			   private Image img;
+			  
+			  public void init() {
+			//загрузка изображения из корня проекта
+			       img = getImage(getCodeBase(), "1.png");
+			}
+			   public void paint(Graphics g){ 
+			g.drawImage(img, 0, 0, this);
+			}
+			}
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel.setHorizontalTextPosition(SwingConstants.LEADING);
+		lblNewLabel.setBackground(Color.LIGHT_GRAY);
+		lblNewLabel.setIcon(new ImageIcon("D:\\Development\\workspace\\vphyak\\src\\1.png"));
+		lblNewLabel.setBounds(0, 0, 596, 352);
+		pSpeed.add(lblNewLabel);
+		tabbedPane.setBackgroundAt(2, Color.LIGHT_GRAY);
+		
+		
+	    JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 108, 21);
 		frame.getContentPane().add(menuBar);
 		
