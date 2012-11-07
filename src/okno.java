@@ -275,7 +275,7 @@ public class okno {
 		lblNewLabel.setIcon(new ImageIcon("D:\\Development\\workspace\\vphyak\\src\\1.png"));
 		lblNewLabel.setBounds(0, 0, 596, 352);
 		pSpeed.add(lblNewLabel);
-		tabbedPane.setBackgroundAt(2, Color.LIGHT_GRAY);
+		tabbedPane.setBackgroundAt(2, Color.ORANGE);
 		
 		
 	    JMenuBar menuBar = new JMenuBar();
