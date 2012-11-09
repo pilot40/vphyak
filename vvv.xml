@@ -3,12 +3,12 @@
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
     <target name="create_run_jar">
-        <jar destfile="/home/pilot/workspace/vphyak/vph.jar" filesetmanifest="mergewithoutmain">
+        <jar destfile="D:/Development/workspace/vphyak/vph.jar" filesetmanifest="mergewithoutmain">
             <manifest>
                 <attribute name="Main-Class" value="okno"/>
                 <attribute name="Class-Path" value="."/>
             </manifest>
-            <fileset dir="/home/pilot/workspace/vphyak/bin"/>
+            <fileset dir="D:/Development/workspace/vphyak/bin"/>
         </jar>
     </target>
 </project>

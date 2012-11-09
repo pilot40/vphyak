@@ -255,7 +255,7 @@ public class okno {
 		pSpeed.setBackground(Color.WHITE);
 		tabbedPane.addTab("Скорости", null, pSpeed, null);
 		pSpeed.setLayout(null);
-		
+		/*
 		class DrawImage extends JApplet {
 			   private Image img;
 			  
@@ -266,7 +266,7 @@ public class okno {
 			   public void paint(Graphics g){ 
 			g.drawImage(img, 0, 0, this);
 			}
-			}
+			}*/
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
