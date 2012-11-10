@@ -21,7 +21,7 @@ import javax.swing.JTextPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
-//import javax.swing.UIManager;
+import javax.swing.UIManager;
 import java.awt.Toolkit;
 import javax.swing.JMenu;
 import java.awt.event.ActionListener;
@@ -39,16 +39,21 @@ public class okno {
 	private JTextField txtVzlVes;
 
 	/**
-	 * Launch the application.
+	 * <b>Запуск приложения<b>.
 	 */
 	public static void main(String[] args) {
-		   //Установка Java Look and Feel (по умолчанию)
-		   /*try {
-		      UIManager.setLookAndFeel(
-		    		  UIManager.getSystemLookAndFeelClassName());
+		/**
+		 * Установка Java Look and Feel (по умолчанию).
+		 */		  
+		   try {
+		      //UIManager.setLookAndFeel(
+		    		 // UIManager.getSystemLookAndFeelClassName());
+			   UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
 		   }
-		   catch (Exception e) { }*/
-		   //остальная часть программы
+		   catch (Exception e) { }
+			/**
+			 * остальная часть программы.
+			 */		   
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -62,14 +67,14 @@ public class okno {
 	}
 
 	/**
-	 * Create the application.
+	 * Создание приложения.
 	 */
 	public okno() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * frame.
 	 */
 	private void initialize() {
 		frame = new JFrame();
@@ -135,18 +140,37 @@ public class okno {
 		JButton btR = new JButton("Расчитать");
 		btR.setIcon(null);
 		btR.addMouseListener(new MouseAdapter() {
-			@Override
+			@Override			
 			public void mouseClicked(MouseEvent arg0) {
+				/**
+				 * Расчет потребного топлива
+				 */
 				int S = (int) spinS.getValue();
+				/**
+				*Расстояние до аэропорта назначения
+				*/
 				int Salt = (int) spinSalt.getValue();
-				float Tpsum = ((float)S + (float)Salt)/420; //Время полета для общего топлива
-				float Tp = (float)S/420; //Время полета до ап
-				int Hhh = (int)Tp;
-				int Mmm = (int)((Tp- Hhh)*60);
-				int Gf = (int) (((Tpsum*1200)*1.03)+600);
-				txT.setText("0"+(String.valueOf(Hhh))+":"+(String.valueOf(Mmm)));
-				txG.setText(String.valueOf(Gf));
-				txG_2.setText(String.valueOf(Gf));
+				/**
+				*Расстояние до запасного аэропорта
+				**/
+				float Tpsum = ((float)S + (float)Salt)/420;
+				/**
+				* Время полета для общего топлива
+				* */
+				float Tp = (float)S/420; 
+				/**
+				*Время полета до аэропорта назначения
+				**/
+				int Hhh = (int)Tp;/**
+				*Часы
+				**/
+				int Mmm = (int)((Tp- Hhh)*60);/**
+				* Минуты
+				* */
+				int Gf = (int) (((Tpsum*1200)*1.03)+600);/**@see Топливо на полёт*/
+				txT.setText("0"+(String.valueOf(Hhh))+":"+(String.valueOf(Mmm)));/**@see Вывод времени полёта*/
+				txG.setText(String.valueOf(Gf));/**@see Вывод общей заправки*/
+				txG_2.setText(String.valueOf(Gf));/**@see Вывод общей заправки*/
 			}
 		});
 		btR.setBounds(10, 87, 97, 23);
@@ -232,26 +256,26 @@ public class okno {
 		btnRasVes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-			    int Gpust = 11245;//Масса пустого
-			    int Gsl = 80;//Служебный груз
-			    int Gfull = Integer.parseInt(txG_2.getText());
-			    int vEk = 80;
-			    int vPr = 75;
-			    int vTeh = 75;
-			    int vPass = 80;
-			    int Ek = (int) spinEk.getValue();//Экипаж
-			    int Pr = (int) spinBpr.getValue();//Проводники
-			    int Teh = (int) spinTeh.getValue();//Техники
-			    int Pass = (int) spinZagr.getValue();
+			    int Gpust = 11245;/**Масса пустого самолёта*/
+			    int Gsl = 80;/**Служебный груз*/
+			    int Gfull = Integer.parseInt(txG_2.getText());/**Заправка топливом*/
+			    int vEk = 80;/**Вес члена экипажа*/
+			    int vPr = 75;/**Вес бортпроводника*/
+			    int vTeh = 75;/**Вес техника*/
+			    int vPass = 80;/**Вес пассажира*/
+			    int Ek = (int) spinEk.getValue();/**Число членов экипажа*/
+			    int Pr = (int) spinBpr.getValue();/**Число бортпроводников*/
+			    int Teh = (int) spinTeh.getValue();/**Число техников*/
+			    int Pass = (int) spinZagr.getValue();/**Число пассажиров*/
 			    int Gvzl =Gpust+Gsl+Gfull+(Ek*vEk)+(Pr*vPr)+(Teh*vTeh)+(Pass*vPass)-65;
-			    txtVzlVes.setText(String.valueOf(Gvzl));	   
+			    txtVzlVes.setText(String.valueOf(Gvzl));/**Вычисление взлётного веса*/	   
 			}
 		});
 		btnRasVes.setFont(new Font("Arial", Font.BOLD, 12));
 		btnRasVes.setBounds(10, 258, 120, 23);
 		pVes.add(btnRasVes);
 		
-		JPanel pSpeed = new JPanel();
+		JPanel pSpeed = new JPanel();/**Вкладка графика скоростей*/
 		pSpeed.setBackground(Color.WHITE);
 		tabbedPane.addTab("Скорости", null, pSpeed, null);
 		pSpeed.setLayout(null);
@@ -272,7 +296,7 @@ public class okno {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblNewLabel.setBackground(Color.LIGHT_GRAY);
-		lblNewLabel.setIcon(new ImageIcon("D:\\Development\\workspace\\vphyak\\src\\1.png"));
+		lblNewLabel.setIcon(new ImageIcon("D:\\Development\\workspace\\vphyak\\src\\1.png"));/**Размещение картинки наметке*/
 		lblNewLabel.setBounds(0, 0, 596, 352);
 		pSpeed.add(lblNewLabel);
 		tabbedPane.setBackgroundAt(2, Color.ORANGE);
@@ -289,7 +313,7 @@ public class okno {
 		menuFile.add(menuItemOpen);
 		
 		JMenuItem menuItemExit = new JMenuItem("Выход");
-		//выход
+		/**выход из программы с запросом*/
 		menuItemExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Object[] options = { "Да", "Нет!" };
@@ -310,7 +334,7 @@ public class okno {
 		
 		JMenu menuHelp = new JMenu("Помощь");
 		menuBar.add(menuHelp);
-		//О программе
+		/**О программе*/
 		JMenuItem menuItemAbout = new JMenuItem("О программе");
 		menuItemAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
