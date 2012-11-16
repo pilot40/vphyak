@@ -48,7 +48,7 @@ public class okno {
 		   try {
 		      //UIManager.setLookAndFeel(
 		    		 // UIManager.getSystemLookAndFeelClassName());
-			   UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+			   //UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
 		   }
 		   catch (Exception e) { }
 			/**
@@ -82,12 +82,13 @@ public class okno {
 		frame.setResizable(false);
 		frame.setTitle("ВПХ Як-40");
 		frame.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
-		frame.setBounds(100, 100, 617, 471);
+		frame.setBounds(100, 100, 724, 501);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 25, 601, 407);
+		tabbedPane.setBackground(Color.WHITE);
+		tabbedPane.setBounds(0, 25, 720, 448);
 		frame.getContentPane().add(tabbedPane);
 		
 		JPanel pFuel = new JPanel();
@@ -292,14 +293,28 @@ public class okno {
 			}
 			}*/
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel.setHorizontalTextPosition(SwingConstants.LEADING);
-		lblNewLabel.setBackground(Color.LIGHT_GRAY);
-		lblNewLabel.setIcon(new ImageIcon("D:\\Development\\workspace\\vphyak\\src\\1.png"));/**Размещение картинки наметке*/
-		lblNewLabel.setBounds(0, 0, 596, 352);
-		pSpeed.add(lblNewLabel);
+		JLabel lblSpeed = new JLabel("");
+		lblSpeed.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSpeed.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblSpeed.setBackground(Color.WHITE);
+		lblSpeed.setIcon(new ImageIcon("image/1.png"));/**Размещение картинки на метке*/
+		lblSpeed.setBounds(0, 0, 715, 421);
+		pSpeed.add(lblSpeed);
 		tabbedPane.setBackgroundAt(2, Color.ORANGE);
+		
+		JPanel pStab = new JPanel();
+		pStab.setBackground(Color.WHITE);
+		tabbedPane.addTab("Стабилизатор", null, pStab, null);
+		tabbedPane.setBackgroundAt(3, Color.ORANGE);
+		pStab.setLayout(null);
+		
+		JLabel lblStab = new JLabel("");
+		lblStab.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStab.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblStab.setBackground(Color.WHITE);
+		lblStab.setIcon(new ImageIcon("image/3.png"));/**Размещение картинки на метке*/
+		lblStab.setBounds(0, 0, 715, 421);
+		pStab.add(lblStab);
 		
 		
 	    JMenuBar menuBar = new JMenuBar();
