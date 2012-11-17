@@ -1,42 +1,42 @@
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-import java.awt.Font;
+import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.Dialog.ModalExclusionType;
-import java.awt.Graphics;
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
-import javax.swing.JApplet;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JTextPane;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import java.awt.Toolkit;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Properties;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
-import java.awt.Canvas;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
 
 public class okno {
 
 	private JFrame frame;
 	private JTextField txG_2;
 	private JTextField txtVzlVes;
+	//public options();
 
 	/**
 	 * <b>Запуск приложения<b>.
@@ -53,7 +53,29 @@ public class okno {
 		   catch (Exception e) { }
 			/**
 			 * остальная часть программы.
-			 */		   
+			 */	
+		   
+		// получаем домашний каталог пользователя
+	        String homeDir = System.getProperty("user.home");
+
+	        // они объявлены как final, так что к ним можно получить доступ 
+
+	        // во внутреннем анонимном классе ниже
+	        final String settingsFilename =
+	        homeDir + File.separator + "mySettings.properties";
+	        final Properties props = new Properties();
+
+	        // Загрузка сохраненных настроек
+	        try {
+	            FileInputStream input = new FileInputStream(settingsFilename);
+	            props.load(input);
+	            input.close();
+	        } catch(Exception ignore) {
+	            // исключение игнорируется, поскольку ожидалось, что
+	       // файл установочных параметров иногда может не существовать
+	            // при первом запуске приложения он точно не будет существовать
+	        }
+		   
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -280,19 +302,6 @@ public class okno {
 		pSpeed.setBackground(Color.WHITE);
 		tabbedPane.addTab("Скорости", null, pSpeed, null);
 		pSpeed.setLayout(null);
-		/*
-		class DrawImage extends JApplet {
-			   private Image img;
-			  
-			  public void init() {
-			//загрузка изображения из корня проекта
-			       img = getImage(getCodeBase(), "1.png");
-			}
-			   public void paint(Graphics g){ 
-			g.drawImage(img, 0, 0, this);
-			}
-			}*/
-		
 		JLabel lblSpeed = new JLabel("");
 		lblSpeed.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSpeed.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -318,7 +327,7 @@ public class okno {
 		
 		
 	    JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 108, 21);
+		menuBar.setBounds(0, 0, 194, 21);
 		frame.getContentPane().add(menuBar);
 		
 		JMenu menuFile = new JMenu("Файл");
@@ -347,6 +356,31 @@ public class okno {
 		});
 		menuFile.add(menuItemExit);
 		
+		JMenu menu = new JMenu("Настройки");
+		menuBar.add(menu);
+		
+		JMenuItem menuItem = new JMenuItem("Выбрать");
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+/*
+				JFrame contentPane = new JFrame();
+				contentPane.setResizable(false);
+				contentPane.setTitle("Настройки");
+				contentPane.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+				contentPane.setBounds(100, 100, 400, 300);
+				contentPane.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				contentPane.getContentPane().setLayout(null);
+				contentPane.setVisible(true);*/
+
+				
+			}
+
+		
+		});
+		menu.add(menuItem);
+		
 		JMenu menuHelp = new JMenu("Помощь");
 		menuBar.add(menuHelp);
 		/**О программе*/
@@ -359,3 +393,4 @@ public class okno {
 		menuHelp.add(menuItemAbout);
 	}
 }
+
