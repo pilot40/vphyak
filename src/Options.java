@@ -51,7 +51,7 @@ public class Options extends JFrame {
 		setEnabled(true);
 		setAlwaysOnTop(true);
 		setTitle("Настройки");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 365, 141);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -59,19 +59,20 @@ public class Options extends JFrame {
 		
 		JLabel lblVesPust = new JLabel("Вес пустого самолёта:");
 		lblVesPust.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblVesPust.setBounds(10, 11, 89, 14);
+		lblVesPust.setBounds(10, 11, 142, 14);
 		contentPane.add(lblVesPust);
 		
 		txtVesPust = new JTextField();
+		txtVesPust.setFont(new Font("Arial", Font.BOLD, 12));
 		txtVesPust.setHorizontalAlignment(SwingConstants.CENTER);
 		txtVesPust.setText("9940");
-		txtVesPust.setBounds(109, 9, 86, 20);
+		txtVesPust.setBounds(183, 11, 86, 20);
 		contentPane.add(txtVesPust);
 		txtVesPust.setColumns(10);
 		
 		JLabel lblKg = new JLabel("кг");
 		lblKg.setFont(new Font("Arial", Font.BOLD, 12));
-		lblKg.setBounds(205, 12, 17, 14);
+		lblKg.setBounds(279, 14, 17, 14);
 		contentPane.add(lblKg);
 		
 		JButton btnNewButton = new JButton("Внести");
