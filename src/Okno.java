@@ -241,15 +241,15 @@ public class Okno {
 		
 		JLabel lbGvzl = new JLabel("Взлётный вес=");
 		lbGvzl.setFont(new Font("Arial", Font.BOLD, 12));
-		lbGvzl.setBounds(10, 216, 103, 14);
+		lbGvzl.setBounds(10, 258, 103, 14);
 		pVes.add(lbGvzl);
 		
 		txtVzlVes = new JTextField();
 		txtVzlVes.setFont(new Font("Arial", Font.BOLD, 12));
-		txtVzlVes.setBounds(159, 214, 86, 20);
+		txtVzlVes.setBounds(159, 256, 86, 20);
 		pVes.add(txtVzlVes);
 		txtVzlVes.setColumns(10);
-				
+		
 		final JSpinner spinEk = new JSpinner();
 		spinEk.setFont(new Font("Arial", Font.BOLD, 12));
 		spinEk.setModel(new SpinnerNumberModel(3, 3, 5, 1));
@@ -270,9 +270,20 @@ public class Okno {
 		
 		final JSpinner spinZagr = new JSpinner();
 		spinZagr.setFont(new Font("Arial", Font.BOLD, 12));
-		spinZagr.setModel(new SpinnerNumberModel(0, 0, 10, 1));
+		spinZagr.setModel(new SpinnerNumberModel(0, 0, 32, 1));
 		spinZagr.setBounds(159, 169, 86, 20);
 		pVes.add(spinZagr);
+		
+		JLabel lbBag = new JLabel("Багаж=");
+		lbBag.setFont(new Font("Arial", Font.BOLD, 12));
+		lbBag.setBounds(10, 217, 120, 14);
+		pVes.add(lbBag);
+		
+		final JSpinner spinBag = new JSpinner();
+		spinBag.setModel(new SpinnerNumberModel(0, 0, 3200, 10));
+		spinBag.setFont(new Font("Arial", Font.BOLD, 12));
+		spinBag.setBounds(159, 215, 86, 20);
+		pVes.add(spinBag);
 		
 		JButton btnRasVes = new JButton("Расчитать вес");
 		btnRasVes.addMouseListener(new MouseAdapter() {
@@ -289,13 +300,16 @@ public class Okno {
 			    int Pr = (int) spinBpr.getValue();/**Число бортпроводников*/
 			    int Teh = (int) spinTeh.getValue();/**Число техников*/
 			    int Pass = (int) spinZagr.getValue();/**Число пассажиров*/
-			    int Gvzl =Gpust+Gsl+Gfull+(Ek*vEk)+(Pr*vPr)+(Teh*vTeh)+(Pass*vPass)-65;
+			    int vBag = (int) spinBag.getValue();/**Вес багажа*/
+			    int Gvzl =Gpust+Gsl+Gfull+vBag+(Ek*vEk)+(Pr*vPr)+(Teh*vTeh)+(Pass*vPass)-65;
 			    txtVzlVes.setText(String.valueOf(Gvzl));/**Вычисление взлётного веса*/	   
 			}
 		});
 		btnRasVes.setFont(new Font("Arial", Font.BOLD, 12));
-		btnRasVes.setBounds(10, 258, 120, 23);
+		btnRasVes.setBounds(10, 300, 120, 23);
 		pVes.add(btnRasVes);
+		
+
 		
 		JPanel pSpeed = new JPanel();/**Вкладка графика скоростей*/
 		pSpeed.setBackground(Color.WHITE);
@@ -375,14 +389,10 @@ public class Okno {
 		JMenuItem menuItemAbout = new JMenuItem("О программе");
 		menuItemAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(frame, "Расчёт ВПХ Як-40 RA-88306\n ООО АК СКОЛ", "О программе", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(frame, "Расчёт ВПХ Як-40", "О программе", JOptionPane.PLAIN_MESSAGE);
 			}
 		});
 		menuHelp.add(menuItemAbout);
 	}
-	
-	
-	
-	
 }
 

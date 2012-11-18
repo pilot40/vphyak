@@ -57,7 +57,7 @@ public class Options extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblVesPust = new JLabel("Вес пустого:");
+		JLabel lblVesPust = new JLabel("Вес пустого самолёта:");
 		lblVesPust.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblVesPust.setBounds(10, 11, 89, 14);
 		contentPane.add(lblVesPust);
